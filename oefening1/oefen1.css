@@ -1,37 +1,36 @@
 /*font family from google fonts*/
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap");
-
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
+
 body {
-    font-family: "Oswald", sans-serif;
-    display: flex;
-    background-color: #cecdfa;
+  font-family: "Oswald", sans-serif;
+  display: flex;
+  background-color: #cecdfa;
 }
 
 #date {
-    font-weight: 300;
-    font-size: 2.2rem;
+  font-weight: 300;
+  font-size: 2.2rem;
 }
 
 #time {
-    font-weight: 300;
-    font-size: 2.2rem;
-    float: right;
+  font-weight: 300;
+  font-size: 2.2rem;
+  float: right;
 }
 
 /* for smaller screens below 700px */
 @media only screen and (max-width: 700px) {
-    body {
-        font-size: 1.8rem;
-    }
+  body {
+    font-size: 1.8rem;
+  }
 }
-
 /*for smaller screens below 300px*/
 @media only screen and (max-width: 300px) {
-    body {
-        font-size: 1.6rem;
-    }
-}
+  body {
+    font-size: 1.6rem;
+  }
+}/*# sourceMappingURL=oefen1.css.map */
