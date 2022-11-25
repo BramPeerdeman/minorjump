@@ -1,6 +1,7 @@
 const FULL_DASH_ARRAY = 283;
-const WARNING_THRESHOLD = 10;
-const ALERT_THRESHOLD = 5;
+const WARNING_THRESHOLD = 180;
+const WARNING_THRESHOLD2 = 180;
+const ALERT_THRESHOLD = 60;
 
 const COLOR_CODES = {
   info: {
@@ -16,7 +17,7 @@ const COLOR_CODES = {
   }
 };
 
-const TIME_LIMIT = 600;
+const TIME_LIMIT = 10;
 let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
@@ -123,23 +124,12 @@ window.addEventListener("load", () => {
       const today = new Date();
   
       // get time components
-      const hours = today.getHours();
-      const minutes = today.getMinutes();
-      const seconds = today.getSeconds();
+   
+
   
       //add '0' to hour, minute & second when they are less 10
-      const hour = hours < 10 ? "0" + hours : hours;
-      const minute = minutes < 10 ? "0" + minutes : minutes;
-      const second = seconds < 10 ? "0" + seconds : seconds;
-  
-      //make clock a 12-hour time clock
-      const hourTime = hour > 12 ? hour - 12 : hour;
-  
-      // if (hour === 0) {
-      //   hour = 12;
-      // }
-      //assigning 'am' or 'pm' to indicate time of the day
-      const ampm = hour < 12 ? "AM" : "PM";
+      
+     
   
       // get date components
       const month = today.getMonth();
@@ -164,7 +154,7 @@ window.addEventListener("load", () => {
   
       //get current date and time
       const date = monthList[month] + " " + day + ", " + year;
-      const time = hourTime + ":" + minute + ":" + second + ampm;
+     
   
       //combine current date and time
     
@@ -174,3 +164,35 @@ window.addEventListener("load", () => {
       setTimeout(clock, 1000);
     }
   });
+
+
+
+
+var app;
+// function startTimer(duration, display) {
+//     timer = duration;
+//     var minutes, seconds;
+//     setInterval(function () {
+//         minutes = parseInt(timer / 60, 10)
+//         seconds = parseInt(timer % 60, 10);
+
+//         minutes = minutes < 10 ? "0" + minutes : minutes;
+//         seconds = seconds < 10 ? "0" + seconds : seconds;
+
+//         display.textContent = minutes + ":" + seconds;
+
+//         if (--timer < 0) {
+//             timer = duration;
+//         }
+//     }, 1000);
+// }
+
+function resetTimer() {
+  app = 10 * 1;
+}
+
+window.onload = function () {
+    fiveMinutes = 10 * 1,
+        display = document.querySelector('#time');
+    app(fiveMinutes, display);
+};
