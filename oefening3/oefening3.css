@@ -83,7 +83,7 @@ body {
     color: black;
   }
   50% {
-    color: red;
+    color: rgb(255, 0, 0);
   }
   to {
     color: black;

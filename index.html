@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="nl" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Jump</title>
+    <style>
+
+    </style>
+
+    <meta name="viewport" content="width = device-width">
+  </head>
+  <body>
+
+    <script>
+
+      let kleurenBlokken = [
+        ['green', 12.02, 13.30],
+        ['red', 13.30, 14.00],
+        ['yellow', 15.30, 16.00]
+      ];
+    
+      setInterval(function(){
+        // haal de huidige tijd
+        let currentTime = new Date();
+        console.log(currentTime);
+    
+        // haal het uur en de minuten
+        let currentUur = currentTime.getHours();
+        let currentMin = currentTime.getMinutes();
+    
+        console.log('curU ' + currentUur);
+        console.log('curM ' + currentMin);
+    
+        // zet huidige uren en minuten in een float
+        let curFloat = parseFloat(currentUur+"."+currentMin);
+        console.log(curFloat);
+    
+        // voer de vergelijking uit
+        for(let i = 0; i < kleurenBlokken.length; i++) {
+          //kleurenBlokken[i][0]; - kleur
+          //kleurenBlokken[i][1]; - starttijd
+          //kleurenBlokken[i][2]; - eindtijd
+          if (curFloat > kleurenBlokken[i][1] && curFloat < kleurenBlokken[i][2]) {
+            console.log("dit kleurenblok is aan de beurt "+ kleurenBlokken[i][0]);
+          }
+          var date = new Date();
+          var hour = date.getHours();
+          var color = '#' + hour + hour + hour;
+          document.body.style.backgroundColor = color;
+        }
+    
+    
+      }, 1000);
+    
+    
+      </script>
+  </body>
+
+  
+</html>
