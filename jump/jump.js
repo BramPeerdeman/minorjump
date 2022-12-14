@@ -71,7 +71,7 @@ function openColorBox() {
         iframe: true,
         width: "100%",
         height: "100%",
-        href: "#",
+        href: "kerst.webp",
         onLoad: function () {
             $('#cboxClose').remove();
             setTimeout(function () {
@@ -80,8 +80,9 @@ function openColorBox() {
         }
     });
 }
+
 // var seconds = 1,
-setInterval(countDown, 600000);
+setInterval(countDown, 6000);
 
 function countDown() {
     openColorBox();
@@ -112,9 +113,25 @@ function tick() {
     var pretty = ((mins < 10) ? "0" : "") + mins + ":" + ((secs < 10) ? "0" : "") + secs;
 
     document.getElementById("countdown").innerHTML = pretty;
+    document.getElementById("fullscreenTimerId").innerHTML = secs;
+    
+
+    if(mins == 0 && secs < 11){
+        document.body.style.backgroundColor = 'lime';
+        document.getElementById("container").style.display="none"
+        document.getElementById("fullscreenTimerId").style.display="block"
+
+    }
+     setTimeout(function delay(){
+     if(secs == 0){
+        document.body.style.backgroundColor = '#f1f1f1';
+        document.getElementById("container").style.display="grid"
+        document.getElementById("fullscreenTimerId").style.display="none"
+    }
+}, 1000);
 }
 
-startTimer(10 * 60); // 4 minutes in seconds
+startTimer(1 * 20); // 4 minutes in seconds
 
 
 
