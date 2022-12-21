@@ -82,7 +82,7 @@ function openColorBox() {
 }
 
 // var seconds = 1,
-setInterval(countDown, 6000);
+setInterval(countDown, 600000);
 
 function countDown() {
     openColorBox();
@@ -106,7 +106,7 @@ function tick() {
     }
     else {
         clearInterval(ticker);
-        startTimer(5 * 60); // 4 minutes in seconds
+        startTimer(30 * 60); // 4 minutes in seconds
     }
     var mins = Math.floor(secs / 60);
     secs %= 60;
@@ -131,7 +131,7 @@ function tick() {
 }, 1000);
 }
 
-startTimer(1 * 20); // 4 minutes in seconds
+startTimer(30 * 60); // 4 minutes in seconds
 
 
 
@@ -150,7 +150,7 @@ function tick1() {
     }
     else {
         clearInterval(ticker1);
-        startTimer1(5 * 60); // 4 minutes in seconds
+        startTimer1(30 * 60); // 4 minutes in seconds
     }
     var mins1 = Math.floor(secs1 / 60);
     secs1 %= 60;
@@ -159,36 +159,30 @@ function tick1() {
     document.getElementById("countdown1").innerHTML = pretty1;
 }
 
-startTimer1(10 * 60); // 4 minutes in seconds
+startTimer1(30 * 60); // 4 minutes in seconds
 
 
 
 var timeInSecs2;
 var ticker2;
-
 function startTimer2(secs2) {
     timeInSecs2 = parseInt(secs2);
     ticker2 = setInterval("tick2()", 1000);
 }
-
-function tick2() {
-    var secs2 = timeInSecs2;
-    if (secs2 > 0) {
-        timeInSecs2--;
-    }
-    else {
-        clearInterval(ticker2);
-        startTimer2(5 * 60); // 4 minutes in seconds
-    }
-    var mins2 = Math.floor(secs2 / 60);
-    secs2 %= 60;
-    var pretty2 = ((mins2 < 10) ? "0" : "") + mins2 + ":" + ((secs2 < 10) ? "0" : "") + secs2;
-
-    document.getElementById("countdown2").innerHTML = pretty2;
+function tick2( ) {
+let secs2 = timeInSecs2;
+if (secs2 == 1800) {
+timeInSecs2 = 3600; 
 }
-
-startTimer2(20 * 60); // 4 minutes in seconds
-
+else {
+timeInSecs2--; 
+}
+let mins2 = Math.floor(secs2/60);
+secs2 %= 60;
+let pretty2 =( (mins2 < 10) ? "0" : "" ) + mins2 + ":" + ( (secs2 < 10) ? "0" : "" ) + secs2;
+document.getElementById("countdown2").innerHTML = pretty2;
+}
+startTimer2(60*60);
 
 
 
