@@ -91,98 +91,110 @@ function countDown() {
 
 
 
-var timeInSecs;
-var ticker;
+let timeInSecs2;
+let ticker2;
 
-function startTimer(secs) {
-    timeInSecs = parseInt(secs);
-    ticker = setInterval("tick()", 1000);
-}
+  const targetTime = new Date();
 
-function tick() {
-    var secs = timeInSecs;
-    if (secs > 0) {
-        timeInSecs--;
+  targetTime.setHours(11, 0, 0, 0);
+
+  function startTimer() {
+    // Calculate the time remaining in seconds
+    timeInSecs2 = Math.floor((targetTime - Date.now()) / 1000);
+
+    // If the target time has passed, set the target time to the next day
+    if (timeInSecs2 < 0) {
+      targetTime.setDate(targetTime.getDate() + 1);
+      timeInSecs2 = Math.floor((targetTime - Date.now()) / 1000);
     }
-    else {
-        clearInterval(ticker);
-        startTimer(30 * 60); // 4 minutes in seconds
-    }
-    var mins = Math.floor(secs / 60);
-    secs %= 60;
-    var pretty = ((mins < 10) ? "0" : "") + mins + ":" + ((secs < 10) ? "0" : "") + secs;
 
-    document.getElementById("countdown").innerHTML = pretty;
-    document.getElementById("fullscreenTimerId").innerHTML = secs;
+    ticker2 = setInterval(tick2, 1000);
+  }
+
+  function tick2() {
+    // Decrease the time remaining by 1 second
+    timeInSecs2--;
+  
+    // Calculate the time remaining in seconds
+    let secs2 = timeInSecs2;
     
-
-    if(mins == 0 && secs < 11){
-        document.body.style.backgroundColor = 'lime';
-        document.getElementById("container").style.display="none"
-        document.getElementById("fullscreenTimerId").style.display="block"
-
+    // If the target time has passed, set the target time to the next day
+    if (secs2 <= 0) {
+      targetTime.setDate(targetTime.getDate() + 1);
+      timeInSecs2 = Math.floor((targetTime - Date.now()) / 1000);
+      secs2 = timeInSecs2;
     }
-     setTimeout(function delay(){
-     if(secs == 0){
-        document.body.style.backgroundColor = '#f1f1f1';
-        document.getElementById("container").style.display="grid"
-        document.getElementById("fullscreenTimerId").style.display="none"
-    }
+  
+    // Calculate the time remaining in half-hour blocks
+    let halfHourBlocks = Math.floor(secs2 / 3600);
+    secs2 %= 3600;
+  
+    // Calculate the time remaining in minutes and seconds
+    let mins2 = Math.floor(secs2 / 60);
+    secs2 %= 60;
+  
+    // Format the time as a string
+    let pretty2 =  (mins2 < 10 ? "0" : "") + mins2 + ":" + (secs2 < 10 ? "0" : "") + secs2;
+  
+    // Update the countdown element
+    document.getElementById("countdown2").innerHTML = pretty2;
+    document.getElementById("fullscreenTimerId").innerHTML = secs2;
+  
+    // countdown van 10
+    if (mins2 == 0 && secs2 < 11) {
+      document.body.style.backgroundColor = "#2803a0";
+      document.getElementById("container").style.display = "none";
+      document.getElementById("fullscreenTimerId").style.display = "block";
+}
+setTimeout(function delay() {
+if (secs2 == 0) {
+document.body.style.backgroundColor = "#00bfff";
+document.getElementById("container").style.display = "grid";
+document.getElementById("fullscreenTimerId").style. display = "none";
+}
 }, 1000);
 }
 
-startTimer(30 * 60); // 4 minutes in seconds
+startTimer();
 
 
 
-var timeInSecs1;
-var ticker1;
-
-function startTimer1(secs1) {
-    timeInSecs1 = parseInt(secs1);
-    ticker1 = setInterval("tick1()", 1000);
-}
-
-function tick1() {
-    var secs1 = timeInSecs1;
-    if (secs1 > 0) {
-        timeInSecs1--;
-    }
-    else {
-        clearInterval(ticker1);
-        startTimer1(30 * 60); // 4 minutes in seconds
-    }
-    var mins1 = Math.floor(secs1 / 60);
-    secs1 %= 60;
-    var pretty1 = ((mins1 < 10) ? "0" : "") + mins1 + ":" + ((secs1 < 10) ? "0" : "") + secs1;
-
-    document.getElementById("countdown1").innerHTML = pretty1;
-}
-
-startTimer1(30 * 60); // 4 minutes in seconds
 
 
 
-var timeInSecs2;
-var ticker2;
-function startTimer2(secs2) {
-    timeInSecs2 = parseInt(secs2);
-    ticker2 = setInterval("tick2()", 1000);
-}
-function tick2( ) {
-let secs2 = timeInSecs2;
-if (secs2 == 1800) {
-timeInSecs2 = 3600; 
-}
-else {
-timeInSecs2--; 
-}
-let mins2 = Math.floor(secs2/60);
-secs2 %= 60;
-let pretty2 =( (mins2 < 10) ? "0" : "" ) + mins2 + ":" + ( (secs2 < 10) ? "0" : "" ) + secs2;
-document.getElementById("countdown2").innerHTML = pretty2;
-}
-startTimer2(60*60);
+
+// let timeInSecs;
+// let ticker;
+
+// function startTimer(secs) {
+//   timeInSecs = parseInt(secs);
+//   ticker = setInterval("tick()", 1000); 
+// }
+
+// function tick( ) {
+//   let secs = timeInSecs;
+//   if (secs > 0) {
+//     timeInSecs--; 
+//   }
+//   else {
+//     clearInterval(ticker);
+//     startTimer(3600); // reset timer to 60 minutes
+//   }
+
+//   // If the timer hits 30 minutes, reset it to 60 minutes
+//   if (secs == 1800) {
+//     clearInterval(ticker);
+//     startTimer(3600);
+//   }
+
+//   let mins = Math.floor(secs/60);
+//   secs %= 60;
+//   let pretty = ( (mins < 10) ? "0" : "" ) + mins + ":" + ( (secs < 10) ? "0" : "" ) + secs;
+
+//   document.getElementById("countdown2").innerHTML = pretty;
+// }
+
+// startTimer(3600); 
 
 
 
